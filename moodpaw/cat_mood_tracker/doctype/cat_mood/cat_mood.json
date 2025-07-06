@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:date",
+ "creation": "2025-07-06 12:03:34.878512",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "mood",
+  "notes",
+  "caretaker",
+  "amended_from",
+  "cat"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Data",
+   "label": "Date",
+   "unique": 1
+  },
+  {
+   "fieldname": "mood",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Mood",
+   "options": "Happy\nSleepy\nPlayful\nAngry\nCurious"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes "
+  },
+  {
+   "fieldname": "caretaker",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Caretaker",
+   "options": "User"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Cat Mood",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "cat",
+   "fieldtype": "Link",
+   "label": "Cat",
+   "options": "Cat"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-07-06 13:39:47.455555",
+ "modified_by": "Administrator",
+ "module": "Cat Mood Tracker",
+ "name": "Cat Mood",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
