@@ -7,6 +7,12 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
+doc_events = {
+    "Leave Application": {
+        "on_submit": "moodpaw.leave_hook.on_leave_submit",
+        "on_cancel": "moodpaw.leave_hook.on_leave_cancel"
+    }
+}
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/moodpaw/css/moodpaw.css"
