@@ -14,6 +14,17 @@ doc_events = {
     }
 }
 
+doc_events = {
+    "Timesheet": {
+        "on_submit": "moodpaw.snack_hooks.create_snack_request_if_overtime"
+    }
+}
+
+doc_events = {
+    "Spiritual Task Log": {
+        "validate": "moodpaw.practice_hooks.spiritual_task_hooks.validate_spiritual_log"
+    }
+}
 # include js, css files in header of desk.html
 # app_include_css = "/assets/moodpaw/css/moodpaw.css"
 # app_include_js = "/assets/moodpaw/js/moodpaw.js"
