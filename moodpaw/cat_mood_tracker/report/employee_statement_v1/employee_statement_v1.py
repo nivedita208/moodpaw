@@ -90,3 +90,7 @@ def get_salary_slip_data(filters):
 # filters.get("employee") → Returns None if the filter is not passed (no error).
 
 # filters["employee"] → Gives KeyError if the filter was not selected by the user.
+
+# status_map is a mapping between status names and internal database codes.
+# It's needed because UI filter gives names like "Submitted", but SQL needs numbers like 1.
+# values.append(status_map[filters["status"]]) ensures correct value goes into SQL query.
