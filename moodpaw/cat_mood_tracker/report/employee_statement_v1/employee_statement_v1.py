@@ -20,7 +20,7 @@ def execute(filters=None):
     data = get_salary_slip_data(filters)
     return columns, data
 
-def get_salary_slip_data(filters):
+def get_salary_slip_data(filters): 
     where_clause = []
     values = []
 
@@ -86,3 +86,7 @@ def get_salary_slip_data(filters):
 #   LEFT JOIN  : Join Salary Detail table to Salary Slip, linking child records (earnings only)
 #  `tabSalary Detail` sse ON ss.name = sse.parent AND sse.parentfield = 'earnings':--- Use LEFT JOIN to include all Salary Slips even if they don't have matching earnings
 # LEFT JOIN :--- Returns all records from the left table, and matched records from the right. If no match, shows NULL.
+# Why use get() instead of filters["employee"]?
+# filters.get("employee") → Returns None if the filter is not passed (no error).
+
+# filters["employee"] → Gives KeyError if the filter was not selected by the user.
