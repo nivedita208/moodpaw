@@ -15,7 +15,7 @@ def execute(filters=None):
 	]
 
 	data = get_purchase_invoice_item_data(filters)
-	return columns, data
+	return columns, data   # This return line sends the data back to the browser, where it is displayed in your Script Report.
 
 def get_purchase_invoice_item_data(filters):
 	where_clause = []
@@ -65,4 +65,49 @@ def get_purchase_invoice_item_data(filters):
 	"""
 
 	return frappe.db.sql(query, values=values, as_dict=True)
+
+
+# frappe.db.sql() fetches data from database
+# as_dict=True makes it easier to access by column name
+#  Final return columns, data sends it back to the report
+
+# Final Execution Flow:
+# [User selects filters in UI]
+#         ↓
+# [JS sends filters to Python]
+#         ↓
+# [Python builds WHERE clause dynamically]
+#         ↓
+# [Query runs with values inserted]
+#         ↓
+# [Data returned as list of dicts → displayed in report]
+
+
+
+# ------------------- FILTERING WITH where_clause & values EXPLAINED -------------------
+# 1. Initialize two empty lists:
+#    - where_clause → holds SQL conditions as strings (e.g., "pi.posting_date >= %s")
+#    - values       → holds actual values to be inserted in place of %s
+
+# 2. For each filter applied from UI (like from_date, to_date, customer):
+#    - Check if that filter exists using filters.get("filter_name")
+#    - If it does, add an SQL condition to where_clause
+#    - Also add the corresponding value to values list
+
+# 3. Example:
+#    if filters.get("from_date"):
+#        where_clause.append("pi.posting_date >= %s")
+#        values.append(filters.get("from_date"))
+
+# 4. Once all filters are checked, join the where_clause list using " AND "
+#    Example: " WHERE pi.posting_date >= %s AND pi.customer = %s"
+
+# 5. Append this complete WHERE clause string to your main SQL query string
+
+# 6. Finally, run the query using:
+#    frappe.db.sql(query, values=values, as_dict=True)
+#    - This safely injects your values into the %s placeholders
+#    - Protects from SQL injection
+#    - Returns result as list of dicts (if as_dict=True)
+# ---------------------------------------------------------------------------------------
 
